@@ -10,9 +10,10 @@ except ImportError as e:
 
 def main(data):
     x,y=read_data(path='./data/exp02/')
-    print(ridge(x,y,lam=0.2))
-    print(lasso(x,y))
-    return data @ weight 
+    weight1=ridge(x,y,lam=0.2)
+    weight2=lasso(x,y)
+    
+    return data @ weight1 
      pass
     
 def ridge(xArr,yArr,lam=0.2):
@@ -25,7 +26,6 @@ def ridge(xArr,yArr,lam=0.2):
     if np.linalg.det(rxTx) == 0.0:
         print('This matrix cannot do inverse')
         return
-
     ws = rxTx.I * xMat.T * yMat
     return ws
 
