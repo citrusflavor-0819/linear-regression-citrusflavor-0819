@@ -9,23 +9,29 @@ except ImportError as e:
     import numpy as np
 
 def main():
-    x,y=read_data()
-    print(ridge(x，y))
+    x,y=read_data(path='./data/exp02/')
+    print(ridge(x,y,lam=0.2))
     print(lasso(x,y))
      pass
     
-def ridge(x,y,len=0.2):
-    Xmat = np.mat(x)
-    Ymat = np.mat(y)
-    xTx = Xmat.T*Xmat
-    xTxt = xTx + np.eye(x.shape[1])*len
-    if np.linalg.eig(xTxt) == 0.0:
+def ridge(xArr,yArr,lam=0.2):
+    xMat = np.mat(xArr)
+    yMat = np.mat(yArr)
+    # 矩阵乘法
+    xTx = xMat.T * xMat
+    rxTx = xTx + lam * np.eye(xMat.shape[1])
+    # 判断矩阵是否为可逆矩阵
+    if np.linalg.det(rxTx) == 0.0:
+        print('This matrix cannot do inverse')
         return
-    ws = xTxt.I * Xmat.T * Ymat
+
+    ws = rxTx.I * xMat.T * yMat
     return ws
+
     pass
     
 def lasso(data):
+    return 0
     pass
 
 def read_data(path='./data/exp02/'):
