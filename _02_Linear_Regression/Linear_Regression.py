@@ -9,7 +9,7 @@ except ImportError as e:
     import numpy as np
 
 def main(data):
-    x,y=read_data(path='./data/exp02/')
+    x,y=read_data()
     weight1=ridge(x,y,lam=0.2)
     weight2=lasso(x,y)
     
