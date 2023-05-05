@@ -8,10 +8,11 @@ except ImportError as e:
     os.system("sudo pip3 install numpy")
     import numpy as np
 
-def main():
+def main(data):
     x,y=read_data(path='./data/exp02/')
     print(ridge(x,y,lam=0.2))
     print(lasso(x,y))
+    return data @ weight 
      pass
     
 def ridge(xArr,yArr,lam=0.2):
