@@ -11,7 +11,7 @@ def ridge(data):
     alphas = np.logspace(-3, 4, n_alphas)  
     clf = linear_model.Ridge(fit_intercept=True)
     coefs = []
-    score = []
+    score =  []
     intercept = []
     c = 0
     for a in alphas:
