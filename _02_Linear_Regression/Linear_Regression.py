@@ -8,15 +8,17 @@ except ImportError as e:
     os.system("sudo pip3 install numpy")
     import numpy as np
 
-def main():
+def main(data):
     x,y=read_data()
-    weight1=ridge(x,y)
-    weight2=lasso(x,y)
-    
-    return 0
+    weight =model(x,y)
+ 
+    return data @ weight
      pass
+     
+ def model(x,y):
+   return np.dot(np.linalg.inv(np.dot(x.T,X)),np.dot(x.T,y))
     
-def ridge(X_train, X_test, y_train, y_test):
+def ridge(data):
     n_alphas = 200
     alphas = np.logspace(-3,4, n_alphas) #对数等比数列
     clf = linear_model.Ridge(fit_intercept=True)
@@ -90,7 +92,7 @@ def ridge(X_train, X_test, y_train, y_test):
     plt.show()
     pass
     
-def lasso(X_train, X_test, y_train, y_test):
+def lasso(data):
     n_alphas = 200
     alphas = np.logspace(-5, 0, n_alphas)  # 对数等比数列
     coefs = []
