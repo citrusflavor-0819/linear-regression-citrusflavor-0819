@@ -11,12 +11,11 @@ except ImportError as e:
 def main(data):
     x,y=read_data()
     weight =model(x,y)
- 
     return data @ weight
      pass
      
  def model(x,y):
-   return np.dot(np.linalg.inv(np.dot(x.T,X)),np.dot(x.T,y))
+   return np.dot(np.linalg.inv(np.dot(x.T,x)),np.dot(x.T,y))
     
 def ridge(data):
     n_alphas = 200
@@ -128,8 +127,7 @@ def lasso(data):
     sum_erro = np.sqrt(sum_mean / 1254)
     print('The value of RMSE in cross validation:', sum_erro)
  
-   
-    return 0
+
     pass
 
 def read_data(path='./data/exp02/'):
