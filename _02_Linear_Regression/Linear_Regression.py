@@ -71,25 +71,7 @@ def ridge(data):
         sum_mean += (y_pred[i] - y_test.values[i]) ** 2
     sum_erro = np.sqrt(sum_mean / len(y_pred))
     print('the value of RMSE in cross validation:', sum_erro)
-    #图形展示
-    #设置刻度
-    ax = plt.gca()
-    #设置刻度的映射
-    ax.plot(alphas, score)
-    # ax.plot(alphas,coefs)
-    #设置x轴的刻度显示方式
-    ax.set_xscale('log')
-    # #翻转x轴
-    # ax.set_xlim(ax.get_xlim()[::-1])
-    #设置x、y标签以及标题
-    plt.xlabel('alpha')
-    plt.ylabel('score')
-    # plt.ylabel(('weights'))
-    plt.title('Ridge score&alphas')
-    # plt.title('Ridge coefficients as a function of the regularization')
-    #使得坐标轴最大值和最小值与数据保持一致
-    plt.axis('tight')
-    plt.show()
+    
     pass
     
 def lasso(data):
@@ -146,25 +128,7 @@ def lasso(data):
     sum_erro = np.sqrt(sum_mean / 1254)
     print('The value of RMSE in cross validation:', sum_erro)
  
-    # 图形展示
-    # 设置刻度
-    ax = plt.gca()
-    # 设置刻度的映射
-    ax.plot(alphas, score)
-    # ax.plot(alphas,coefs)
-    # 设置x轴的刻度显示方式
-    ax.set_xscale('log')
-    # # 翻转x轴
-    # ax.set_xlim(ax.get_xlim()[::-1])
-    # 设置x、y标签以及标题
-    plt.xlabel('alpha')
-    plt.ylabel('score')
-    # plt.ylabel(('weights'))
-    plt.title('Lasso score&alphas')
-    # plt.title('Lasso coefficients as a function of the regularization')
-    # 使得坐标轴最大值和最小值与数据保持一致
-    plt.axis('tight')
-    plt.show()
+   
     return 0
     pass
 
