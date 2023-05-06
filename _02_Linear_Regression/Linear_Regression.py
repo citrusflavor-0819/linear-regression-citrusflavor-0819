@@ -10,17 +10,32 @@ def ridge(data):
     Xmat = np.mat(x)
     Ymat = np.mat(y)
     xTx = Xmat.T*Xmat
-    xTxt = xTx + np.eye(Xarr.shape[1])*len
+    xTxt = xTx + np.eye(Xarr.shape[1])*(0.2)
     if np.linalg.eig(xTxt) == 0.0:
         return
     weight = xTxt.I * Xmat.T * Ymat
   
-    return data @ weight
+    return weight @ data
    pass
-
+   
+def sigmoid(x):
+    return 1.0/(1+np.exp(-x))
+    
 def lasso(data):
-  
-    return data @ weight
+
+ x,y=read_data()
+ Xmat = np.mat(x)
+ Ymat = np.mat(y)   
+ lr = 0.001
+ epochs  =10000  
+ m,n = np.shape(x)
+ weight= np.mat(np.ones((n,1)))
+ 
+ for i in range(epochs+1):
+        h = sigmoid(Xmat*weight)
+        weight_grad = Xmat.T*(h - Ymat)/m
+        weight = weight - lr *weight_grad
+  return weight @ data
     pass
 
 
