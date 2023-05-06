@@ -53,6 +53,7 @@ def ridge(data):
         sum_mean += (y_pred[i] - y_test.values[i]) ** 2
     sum_erro = np.sqrt(sum_mean / len(y_pred))
     print('the value of RMSE in cross validation:', sum_erro)
+    return data @ weight
    pass
 
 def lasso(data):
@@ -102,15 +103,10 @@ def lasso(data):
         sum_mean += (y_pred[i] - y_test.values[i]) ** 2
     sum_erro = np.sqrt(sum_mean / 1254)
     print('The value of RMSE in cross validation:', sum_erro)
+    
+    return data @ weight
     pass
 
-def main(data):
-    x,y=read_data()
-    weight = model(x,y)
-    return data @ weight
-
-def model(x, y):
-        return np.dot(np.linalg.inv(np.dot(x.T, x)), np.dot(x.T, y))
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
