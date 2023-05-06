@@ -1,5 +1,4 @@
 import os
-
 try:
     import numpy as np
 except ImportError as e:
