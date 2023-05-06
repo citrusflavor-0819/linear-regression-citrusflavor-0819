@@ -4,16 +4,12 @@ try:
 except ImportError as e:
     os.system("sudo pip3 install numpy")
     import numpy as np
+import numpy as np
 
 def ridge(data):
-    x,y=read_data()
-    Xmat = np.mat(x)
-    Ymat = np.mat(y)
-    xTx = Xmat.T*Xmat
-    xTxt = xTx + np.eye(Xarr.shape[1])*(0.2)
-    if np.linalg.eig(xTxt) == 0.0:
-        return
-    weight = xTxt.I * Xmat.T * Ymat
+    X,y=read_data()
+  z=np.matmul(X.T,x)+np.eye(X.shape[1])*(-0.1)
+weight =np.matmul(np.linalg.inv(z),np.matmul(X.T,y))
   
     return weight @ data
    pass
